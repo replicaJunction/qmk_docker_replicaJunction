@@ -1,0 +1,19 @@
+version: '3.2'
+services:
+  qmk:
+    build: ./container
+    environment:
+      keyboard: 'ergodox_ez'
+      layout: 'bootstrap'
+    volumes:
+      # Keymap directory. Notice that the layout (the last folder) matches
+      # the layout environment variable above.
+      - type: bind
+        source: ./keymap
+        target: /qmk_firmware/keyboards/ergodox_ez/keymaps/bootstrap
+
+      # Output directory. Compiled .hex files will be placed here
+      # Don't remove this one!
+      - type: bind
+        source: ./output
+        target: /output
