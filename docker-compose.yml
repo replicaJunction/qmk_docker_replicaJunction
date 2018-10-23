@@ -3,14 +3,24 @@ services:
   qmk:
     build: ./container
     environment:
-      keyboard: 'ergodox_ez'
-      layout: 'bootstrap'
+      keyboard: 'ergodox_ez,atreus'
+      layout: 'replicaJunction'
+
     volumes:
-      # Keymap directory. Notice that the layout (the last folder) matches
-      # the layout environment variable above.
+      # Ergodox
       - type: bind
-        source: ./keymap
-        target: /qmk_firmware/keyboards/ergodox_ez/keymaps/bootstrap
+        source: ./keyboards/ergodox
+        target: /qmk_firmware/keyboards/ergodox_ez/keymaps/replicaJunction
+
+      # Atreus
+      - type: bind
+        source: ./keyboards/atreus
+        target: /qmk_firmware/keyboards/atreus/keymaps/replicaJunction
+
+      # User config
+      - type: bind
+        source: ./user
+        target: /qmk_firmware/users/replicaJunction
 
       # Output directory. Compiled .hex files will be placed here
       # Don't remove this one!
