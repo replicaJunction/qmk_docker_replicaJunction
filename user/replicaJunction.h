@@ -137,13 +137,15 @@ extern void dance_layer(qk_tap_dance_state_t *state, void *user_data);
 #define LAYOUT_wrapper(...)                  LAYOUT(__VA_ARGS__)
 #define LAYOUT_ergodox_wrapper(...)          LAYOUT_ergodox(__VA_ARGS__)
 
-#define _________________L_COLEMAK_L1______________       KC_Q,    KC_W,    KC_F,    KC_P,    KC_B
-#define _________________L_COLEMAK_L2______________       KC_A,    KC_R_LT, KC_S_LT, KC_T,    KC_G
-#define _________________L_COLEMAK_L3______________       KC_Z,    KC_X,    KC_C,    KC_D_LT, KC_V
+#define ___________________BLANK___________________       _______, _______, _______, _______, _______
 
-#define _________________L_COLEMAK_R1______________       KC_J,    KC_L,    KC_U,    KC_Y,    KC_SCLN
-#define _________________L_COLEMAK_R2______________       KC_M,    KC_N,    KC_E_LT, KC_I_LT, KC_O
-#define _________________L_COLEMAK_R3______________       KC_K,    KC_H,    KC_COMM, KC_DOT,  KC_SLSH
+#define __________________COLEMAK_L1_______________       KC_Q,    KC_W,    KC_F,    KC_P,    KC_B
+#define __________________COLEMAK_L2_______________       KC_A,    KC_R_LT, KC_S_LT, KC_T,    KC_G
+#define __________________COLEMAK_L3_______________       KC_Z,    KC_X,    KC_C,    KC_D_LT, KC_V
+
+#define __________________COLEMAK_R1_______________       KC_J,    KC_L,    KC_U,    KC_Y,    KC_SCLN
+#define __________________COLEMAK_R2_______________       KC_M,    KC_N,    KC_E_LT, KC_I_LT, KC_O
+#define __________________COLEMAK_R3_______________       KC_K,    KC_H,    KC_COMM, KC_DOT,  KC_SLSH
 
 
 
@@ -157,6 +159,16 @@ extern void dance_layer(qk_tap_dance_state_t *state, void *user_data);
 
 
 
+#define __________________L_NUMBER1________________       KC_COLN, KC_7,    KC_8,    KC_9,    KC_PSLS
+#define __________________L_NUMBER2________________       KC_HASH, KC_4,    KC_5,    KC_6,    KC_PAST
+#define __________________L_NUMBER3________________       KC_BSPC, KC_1,    KC_2,    KC_3,    KC_PMNS
+
+#define _________________L_SYMBOL_1________________       KC_EXLM, KC_AT,   KC_LCBR, KC_RCBR, KC_SLSH
+#define _________________L_SYMBOL_2________________       KC_HASH, KC_DLR,  KC_LPRN, KC_RPRN, KC_PIPE
+#define _________________L_SYMBOL_3________________       KC_PERC, KC_CIRC, KC_LBRC, KC_RBRC, KC_BSLS
+
+
+
 #define _________________L_EXTEND_L1_______________       _______, _______, KC_APP,  KX_CGR,  KX_PAST
 #define _________________L_EXTEND_L2_______________       KC_LGUI, KC_LSFT, KC_LALT, KC_LCTL, _______
 #define _________________L_EXTEND_L3_______________       _______, _______, _______, KX_SRCH, KX_ARSC
@@ -164,6 +176,12 @@ extern void dance_layer(qk_tap_dance_state_t *state, void *user_data);
 #define _________________L_EXTEND_R1_______________       KC_PGUP, KC_HOME, KC_UP,   KC_END,  KC_DEL
 #define _________________L_EXTEND_R2_______________       KC_PGDN, KC_LEFT, KC_DOWN, KC_RGHT, KC_BSPC
 #define _________________L_EXTEND_R3_______________       _______, KX_STAB, KC_TAB,  KX_WTAB, KC_INS
+
+
+
+#define __________________FUNCTION1________________       KC_VOLU, KC_F9,   KC_F10,  KC_F11,  KC_F12
+#define __________________FUNCTION2________________       KC_MUTE, KC_F5,   KC_F6,   KC_F7,   KC_F8
+#define __________________FUNCTION3________________       KC_VOLD, KC_F1,   KC_F2,   KC_F3,   KC_F4
 
 
 
