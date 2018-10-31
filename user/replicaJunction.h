@@ -15,9 +15,12 @@
 #define _______ KC_TRNS
 #define ooooooo KC_TRNS
 
-#define MO_FUNC MO(L_FUNC)
 #define TT_NUM  TT(L_NUM)
 #define OSL_SYM OSL(L_SYMBOL)
+
+#ifdef L_FUNCTION
+    #define MO_FUNC MO(L_FUNCTION)
+#endif
 
 #ifdef L_GAMING
     #define TG_GAME TG(L_GAMING)
@@ -183,10 +186,15 @@ enum userspace_custom_keycodes {
 #define __________________L_NUMBER_L2______________       _______, KC_LEFT, KC_DOWN, KC_RGHT, _______
 #define __________________L_NUMBER_L3______________       _______, _______, _______, _______, _______
 
-#define __________________L_NUMBER_R1______________       KC_COLN, KC_7,    KC_8,    KC_9,    KC_PSLS
-#define __________________L_NUMBER_R2______________       KC_HASH, KC_4,    KC_5,    KC_6,    KC_PAST
-#define __________________L_NUMBER_R3______________       KC_COMM, KC_1,    KC_2,    KC_3,    KC_PMNS
-
+#ifdef USE_NUMPAD
+    #define __________________L_NUMBER_R1______________       KC_COLN, KC_P7,   KC_P8,   KC_P9,   KC_PSLS
+    #define __________________L_NUMBER_R2______________       KC_HASH, KC_P4,   KC_P5,   KC_P6,   KC_PAST
+    #define __________________L_NUMBER_R3______________       KC_COMM, KC_P1,   KC_P2,   KC_P3,   KC_PMNS
+#else
+    #define __________________L_NUMBER_R1______________       KC_COLN, KC_7,    KC_8,    KC_9,    KC_PSLS
+    #define __________________L_NUMBER_R2______________       KC_HASH, KC_4,    KC_5,    KC_6,    KC_PAST
+    #define __________________L_NUMBER_R3______________       KC_COMM, KC_1,    KC_2,    KC_3,    KC_PMNS
+#endif
 
 
 // Symbols
