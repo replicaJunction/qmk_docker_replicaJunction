@@ -44,17 +44,18 @@ void dance_layer(qk_tap_dance_state_t *state, void *user_data)
         // Single tap sends Escape, and also turns off layers
         // That's mostly in case I get stuck and forget where I am
         #ifdef L_NUM
-        layer_off(L_NUM);
+            layer_off(L_NUM);
         #endif
         #ifdef L_EXTEND
-        layer_off(L_EXTEND);
+            layer_off(L_EXTEND);
         #endif
         #ifdef L_SYMBOL
-        layer_off(L_SYMBOL);
+            layer_off(L_SYMBOL);
         #endif
         #ifdef L_QWERTY
-        layer_off(L_QWERTY);
+            layer_off(L_QWERTY);
         #endif
+
         register_code(KC_ESC);
         unregister_code(KC_ESC);
     }
@@ -177,6 +178,42 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
             SEND_STRING("select *");
             return false;
 
+        case G_ADD:
+            if (record->event.pressed)
+                return true;
+
+            SEND_STRING("git add ");
+            return false;
+
+
+        case G_STATS:
+            if (record->event.pressed)
+                return true;
+
+            SEND_STRING("git status");
+            return false;
+
+
+        case G_COMMT:
+            if (record->event.pressed)
+                return true;
+
+            SEND_STRING("git commit ");
+            return false;
+
+        case G_PULL:
+            if (record->event.pressed)
+                return true;
+
+            SEND_STRING("git pull ");
+            return false;
+
+        case G_PUSH:
+            if (record->event.pressed)
+                return true;
+
+            SEND_STRING("git push ");
+            return false;
 
         #ifdef REPLICAJUNCTION_UNICODE_ENABLE
         case U_QUERY:

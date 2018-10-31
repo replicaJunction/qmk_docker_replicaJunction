@@ -3,8 +3,8 @@
 #include "quantum.h"
 
 #if (defined(UNICODE_ENABLE) || defined(UNICODEMAP_ENABLE) || defined(UCIS_ENABLE))
-#define REPLICAJUNCTION_UNICODE_ENABLE
-#include "replicaJunction_unicode.h"
+    #define REPLICAJUNCTION_UNICODE_ENABLE
+    #include "replicaJunction_unicode.h"
 #endif
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -17,8 +17,15 @@
 
 #define MO_FUNC MO(L_FUNC)
 #define TT_NUM  TT(L_NUM)
-#define TG_GAME TG(L_GAMING)
 #define OSL_SYM OSL(L_SYMBOL)
+
+#ifdef L_GAMING
+    #define TG_GAME TG(L_GAMING)
+#endif
+
+#ifdef L_SYMBOL
+    #define TT_SYMB TT(L_SYMBOL)
+#endif
 
 #define OSM_LSF OSM(MOD_LSFT)
 #define OSM_RSF OSM(MOD_RSFT)
@@ -46,6 +53,10 @@
 #define KX_DOMT GUI_T(KC_DOT)
 #define KX_COMT MT(MOD_LCTL | MOD_LALT, KC_COMM)
 #define KX_H_MT ALT_T(KC_H)
+
+// Define LT keycodes based on whether the layout's config.h defines these layers.
+// If the keyboard doesn't define the constant for any given layer, this will act
+// like an ordinary keycode.
 
 #ifdef L_LL_R
     #define KC_R_LT LT(L_LL_R, KC_R)
@@ -97,9 +108,12 @@ enum userspace_custom_keycodes {
     U_DLOOK,               // Look of disapproval
     #endif
 
-    RJ_MUTE,               // Discord mute (GUI+Shift+M)
-    RJ_DEAF,               // Discord deafen (GUI+Shift+D)
-    RJ_DOVR                // Toggle Discord overlay (GUI+Shift+O)
+    // Git commands
+    G_ADD,
+    G_STATS,
+    G_COMMT,
+    G_PULL,
+    G_PUSH
 };
 
 // Mouse keys
@@ -118,9 +132,9 @@ enum userspace_custom_keycodes {
 
 // Tap Dance
 #ifdef TAP_DANCE_ENABLE
-#define TD_LAYER_TOGGLE 0
-extern void dance_layer(qk_tap_dance_state_t *state, void *user_data);
-#define TD_LAYR TD(TD_LAYER_TOGGLE)
+    #define TD_LAYER_TOGGLE 0
+    extern void dance_layer(qk_tap_dance_state_t *state, void *user_data);
+    #define TD_LAYR TD(TD_LAYER_TOGGLE)
 #endif // TAP_DANCE_ENABLE
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -139,6 +153,8 @@ extern void dance_layer(qk_tap_dance_state_t *state, void *user_data);
 
 #define ___________________BLANK___________________       _______, _______, _______, _______, _______
 
+// Colemak base layer
+
 #define __________________COLEMAK_L1_______________       KC_Q,    KC_W,    KC_F,    KC_P,    KC_B
 #define __________________COLEMAK_L2_______________       KC_A,    KC_R_LT, KC_S_LT, KC_T,    KC_G
 #define __________________COLEMAK_L3_______________       KC_Z,    KC_X,    KC_C,    KC_D_LT, KC_V
@@ -148,6 +164,8 @@ extern void dance_layer(qk_tap_dance_state_t *state, void *user_data);
 #define __________________COLEMAK_R3_______________       KC_K,    KC_H,    KC_COMM, KC_DOT,  KC_SLSH
 
 
+
+// QWERTY base layer
 
 #define _________________L_QWERTY_L1_______________       KC_Q    ,KC_W    ,KC_E    ,KC_R    ,KC_T
 #define _________________L_QWERTY_L2_______________       KC_A    ,KC_S    ,KC_D    ,KC_F    ,KC_G
@@ -159,15 +177,31 @@ extern void dance_layer(qk_tap_dance_state_t *state, void *user_data);
 
 
 
-#define __________________L_NUMBER1________________       KC_COLN, KC_7,    KC_8,    KC_9,    KC_PSLS
-#define __________________L_NUMBER2________________       KC_HASH, KC_4,    KC_5,    KC_6,    KC_PAST
-#define __________________L_NUMBER3________________       KC_BSPC, KC_1,    KC_2,    KC_3,    KC_PMNS
+// Number pad
 
-#define _________________L_SYMBOL_1________________       KC_EXLM, KC_AT,   KC_LCBR, KC_RCBR, KC_SLSH
-#define _________________L_SYMBOL_2________________       KC_HASH, KC_DLR,  KC_LPRN, KC_RPRN, KC_PIPE
-#define _________________L_SYMBOL_3________________       KC_PERC, KC_CIRC, KC_LBRC, KC_RBRC, KC_BSLS
+#define __________________L_NUMBER_L1______________       _______, KC_HOME, KC_UP,   KC_END,  _______
+#define __________________L_NUMBER_L2______________       _______, KC_LEFT, KC_DOWN, KC_RGHT, _______
+#define __________________L_NUMBER_L3______________       _______, _______, _______, _______, _______
+
+#define __________________L_NUMBER_R1______________       KC_COLN, KC_7,    KC_8,    KC_9,    KC_PSLS
+#define __________________L_NUMBER_R2______________       KC_HASH, KC_4,    KC_5,    KC_6,    KC_PAST
+#define __________________L_NUMBER_R3______________       KC_COMM, KC_1,    KC_2,    KC_3,    KC_PMNS
 
 
+
+// Symbols
+
+#define __________________L_SYMBOL_L1______________       KC_EXLM, KC_AT,   KC_LCBR, KC_RCBR, KC_SLSH
+#define __________________L_SYMBOL_L2______________       KC_HASH, KC_DLR,  KC_LPRN, KC_RPRN, KC_PIPE
+#define __________________L_SYMBOL_L3______________       KC_PERC, KC_CIRC, KC_LBRC, KC_RBRC, KC_BSLS
+
+#define __________________L_SYMBOL_R1______________       _______, KC_AMPR, _______, KC_TILD, _______
+#define __________________L_SYMBOL_R2______________       _______, KC_MINS, KC_EQL,  KC_GRV,  _______
+#define __________________L_SYMBOL_R3______________       _______, KC_UNDS, _______, _______, _______
+
+
+
+// Extend layer
 
 #define _________________L_EXTEND_L1_______________       _______, _______, KC_APP,  KX_CGR,  KX_PAST
 #define _________________L_EXTEND_L2_______________       KC_LGUI, KC_LSFT, KC_LALT, KC_LCTL, _______
@@ -179,11 +213,26 @@ extern void dance_layer(qk_tap_dance_state_t *state, void *user_data);
 
 
 
+// Function keys
 #define __________________FUNCTION1________________       KC_VOLU, KC_F9,   KC_F10,  KC_F11,  KC_F12
 #define __________________FUNCTION2________________       KC_MUTE, KC_F5,   KC_F6,   KC_F7,   KC_F8
 #define __________________FUNCTION3________________       KC_VOLD, KC_F1,   KC_F2,   KC_F3,   KC_F4
 
 
+
+// Macros
+
+#define __________________MACRO_L1_________________       _______, _______, RJ_SELS, RJ_DUND, _______
+#define __________________MACRO_L2_________________       RJ_NEQ,  RJ_EQ,   RJ_LEQ,  RJ_GEQ,  RJ_GEQR
+#define __________________MACRO_L3_________________       G_PUSH,  G_PULL,  G_COMMT, G_ADD,   G_STATS
+
+#define __________________MACRO_R1_________________       _______, _______, _______, _______, _______
+#define __________________MACRO_R2_________________       _______, _______, _______, _______, _______
+#define __________________MACRO_R3_________________       _______, _______, _______, _______, _______
+
+
+
+// Legacy. I'm migrating away from this style.
 
 #define __________________L_LL_R_L1________________       _______, _______, _______, _______, _______
 #define __________________L_LL_R_L2________________       _______, ooooooo, KC_AMPR, KC_PIPE, _______
