@@ -11,5 +11,7 @@
 
 // These tell my userspace config which layers go on tap-hold letters
 
-#define L_LL_S     L_FUNCTION
-#define L_LL_E     L_MACRO
+#define L_LL_R     L_FUNCTION
+#define L_LL_S     L_NUM
+#define L_LL_E     L_SYMBOL
+#define L_LL_D     L_MACRO

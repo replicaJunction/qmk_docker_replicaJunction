@@ -1,5 +1,6 @@
 #include "replicaJunction.h"
 #include "version.h"
+#include "dynamic_macro.h"
 
 #ifdef TAP_DANCE_ENABLE
 void dance_layer(qk_tap_dance_state_t *state, void *user_data)
@@ -61,10 +62,33 @@ void dance_layer(qk_tap_dance_state_t *state, void *user_data)
     }
 };
 
+void dance_macro( qk_tap_dance_state_t *state, void *user_data) {
+    if ( state->count > 3 )
+        return;
+
+    keyrecord_t kr;
+    kr.event.pressed = false;
+    uint16_t action = DYN_REC_STOP;
+
+    if ( state->count == 1 ) {
+        action = DYN_MACRO_PLAY1;
+    }
+    else if ( state->count == 2 ) {
+        action = DYN_REC_STOP;
+        kr.event.pressed = true;
+    }
+    else if ( state->count == 3 ) {
+        action = DYN_REC_START1;
+    }
+
+    process_record_dynamic_macro( action, &kr );
+}
+
 // Tap Dance Definitions
 // Note - this needs to come AFTER the function is declared
 qk_tap_dance_action_t tap_dance_actions[] = {
-        [TD_LAYER_TOGGLE] = ACTION_TAP_DANCE_FN(dance_layer)
+        [TD_LAYER_TOGGLE] = ACTION_TAP_DANCE_FN(dance_layer),
+        [TD_MACRO]        = ACTION_TAP_DANCE_FN(dance_macro)
 };
 
 #endif // TAP_DANCE_ENABLE
@@ -112,6 +136,10 @@ inline void tap(uint16_t keycode) {
 #endif
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
+    if ( !process_record_dynamic_macro( keycode, record ) ) {
+        return false;
+    }
+
     switch(keycode)
     {
         case RJ_MAKE:  // Compiles the firmware, and adds the flash command based on keyboard bootloader
@@ -178,42 +206,48 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
             SEND_STRING("select *");
             return false;
 
-        case G_ADD:
+        case RJ_4ECH:
             if (record->event.pressed)
                 return true;
 
-            SEND_STRING("git add ");
+            SEND_STRING(" | % { ");
             return false;
 
+        // case G_ADD:
+        //     if (record->event.pressed)
+        //         return true;
 
-        case G_STATS:
-            if (record->event.pressed)
-                return true;
+        //     SEND_STRING("git add ");
+        //     return false;
 
-            SEND_STRING("git status");
-            return false;
+        // case G_STATS:
+        //     if (record->event.pressed)
+        //         return true;
+
+        //     SEND_STRING("git status");
+        //     return false;
 
 
-        case G_COMMT:
-            if (record->event.pressed)
-                return true;
+        // case G_COMMT:
+        //     if (record->event.pressed)
+        //         return true;
 
-            SEND_STRING("git commit ");
-            return false;
+        //     SEND_STRING("git commit ");
+        //     return false;
 
-        case G_PULL:
-            if (record->event.pressed)
-                return true;
+        // case G_PULL:
+        //     if (record->event.pressed)
+        //         return true;
 
-            SEND_STRING("git pull ");
-            return false;
+        //     SEND_STRING("git pull ");
+        //     return false;
 
-        case G_PUSH:
-            if (record->event.pressed)
-                return true;
+        // case G_PUSH:
+        //     if (record->event.pressed)
+        //         return true;
 
-            SEND_STRING("git push ");
-            return false;
+        //     SEND_STRING("git push ");
+        //     return false;
 
         #ifdef REPLICAJUNCTION_UNICODE_ENABLE
         case U_QUERY:

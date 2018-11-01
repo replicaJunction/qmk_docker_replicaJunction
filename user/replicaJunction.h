@@ -102,6 +102,7 @@ enum userspace_custom_keycodes {
     RJ_GEQR,               // => ("greater than or equal - right")
     RJ_DUND,               // $_
     RJ_SELS,               // select * (used for PowerShell)
+    RJ_4ECH,               // | % {    (used for PowerShell)
 
     #ifdef REPLICAJUNCTION_UNICODE_ENABLE
     U_QUERY,               // Display Unicode input mode
@@ -111,12 +112,7 @@ enum userspace_custom_keycodes {
     U_DLOOK,               // Look of disapproval
     #endif
 
-    // Git commands
-    G_ADD,
-    G_STATS,
-    G_COMMT,
-    G_PULL,
-    G_PUSH
+    DYNAMIC_MACRO_RANGE
 };
 
 // Mouse keys
@@ -136,8 +132,12 @@ enum userspace_custom_keycodes {
 // Tap Dance
 #ifdef TAP_DANCE_ENABLE
     #define TD_LAYER_TOGGLE 0
+    #define TD_MACRO        1
     extern void dance_layer(qk_tap_dance_state_t *state, void *user_data);
     #define TD_LAYR TD(TD_LAYER_TOGGLE)
+
+    extern void dance_macro(qk_tap_dance_state_t *state, void *user_data);
+    #define TD_MACR TD(TD_MACRO)
 #endif // TAP_DANCE_ENABLE
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -199,13 +199,13 @@ enum userspace_custom_keycodes {
 
 // Symbols
 
-#define __________________L_SYMBOL_L1______________       KC_EXLM, KC_AT,   KC_LCBR, KC_RCBR, KC_SLSH
-#define __________________L_SYMBOL_L2______________       KC_HASH, KC_DLR,  KC_LPRN, KC_RPRN, KC_PIPE
-#define __________________L_SYMBOL_L3______________       KC_PERC, KC_CIRC, KC_LBRC, KC_RBRC, KC_BSLS
+#define __________________L_SYMBOL_L1______________       KC_EXLM, KC_AT,   KC_LCBR, KC_RCBR, KC_TILD
+#define __________________L_SYMBOL_L2______________       KC_HASH, KC_DLR,  KC_LPRN, KC_RPRN, KC_GRV
+#define __________________L_SYMBOL_L3______________       KC_PERC, KC_CIRC, KC_LBRC, KC_RBRC, _______
 
-#define __________________L_SYMBOL_R1______________       _______, KC_AMPR, _______, KC_TILD, _______
-#define __________________L_SYMBOL_R2______________       _______, KC_MINS, KC_EQL,  KC_GRV,  _______
-#define __________________L_SYMBOL_R3______________       _______, KC_UNDS, _______, _______, _______
+#define __________________L_SYMBOL_R1______________       _______, KC_AMPR, _______, _______, _______
+#define __________________L_SYMBOL_R2______________       _______, KC_PIPE, _______, _______, _______
+#define __________________L_SYMBOL_R3______________       _______, KC_BSLS, _______, _______, _______
 
 
 
@@ -230,12 +230,12 @@ enum userspace_custom_keycodes {
 
 // Macros
 
-#define __________________MACRO_L1_________________       _______, _______, RJ_SELS, RJ_DUND, _______
-#define __________________MACRO_L2_________________       RJ_NEQ,  RJ_EQ,   RJ_LEQ,  RJ_GEQ,  RJ_GEQR
-#define __________________MACRO_L3_________________       G_PUSH,  G_PULL,  G_COMMT, G_ADD,   G_STATS
+#define __________________MACRO_L1_________________       RJ_QMKV, _______, _______, _______, _______
+#define __________________MACRO_L2_________________       RJ_MAKE, _______, _______, _______, _______
+#define __________________MACRO_L3_________________       _______, _______, _______, _______, _______
 
-#define __________________MACRO_R1_________________       _______, _______, _______, _______, _______
-#define __________________MACRO_R2_________________       _______, _______, _______, _______, _______
+#define __________________MACRO_R1_________________       _______, RJ_DUND, RJ_SELS, RJ_4ECH, _______
+#define __________________MACRO_R2_________________       RJ_NEQ,  RJ_EQ,   RJ_GEQR, RJ_GEQ,  RJ_LEQ
 #define __________________MACRO_R3_________________       _______, _______, _______, _______, _______
 
 
