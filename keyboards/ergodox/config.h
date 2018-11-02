@@ -11,9 +11,13 @@
 #define L_MACRO    6
 #define L_GAMING   7
 
-// Tells my userspace config which layers go on tap-hold letters
-#define L_LL_S     L_FUNCTION
-#define L_LL_E     L_MACRO
+// These tell my userspace config which layers go on tap-hold letters
+
+#define L_LL_R     L_FUNCTION
+#define L_LL_S     L_NUM
+#define L_LL_E     L_SYMBOL
+#define L_LL_D     L_MACRO
 
 // Tells replicaJunction.h to use numpad keycodes for the L_NUM layer
+
 #define USE_NUMPAD

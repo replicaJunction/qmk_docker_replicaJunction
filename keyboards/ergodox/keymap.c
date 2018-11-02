@@ -19,10 +19,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   KX_ECTL ,__________________COLEMAK_L1_______________ ,KC_LBRC ,         KC_DEL  ,__________________COLEMAK_R1_______________ ,KC_BSLS,
   KC_TAB  ,__________________COLEMAK_L2_______________ ,                           __________________COLEMAK_R2_______________ ,KC_QUOT,
   KC_LSFT ,__________________COLEMAK_L3_______________ ,KC_RBRC ,         KC_LOCK ,__________________COLEMAK_R3_______________ ,KC_RSFT,
-  TD_LAYR ,KC_LGUI ,KX_CTSF ,KC_LALT ,KC_LCTL ,                                    KC_RALT ,KC_MINS ,KC_QUOT ,KC_EQL  ,TT_NUM ,
+  TD_LAYR ,TD_LAYR ,KC_LGUI ,KC_LALT ,KC_LCTL ,                                    KC_RALT ,KC_MINS ,KC_QUOT ,KC_EQL  ,TT_NUM ,
 
-                                               KC_HOME ,KC_END  ,         KC_LEFT ,KC_RGHT ,
-                                                        KC_PGUP ,         KC_UP   ,
+                                               KC_LCTL ,KC_LALT ,         KC_LEFT ,KC_RGHT ,
+                                                        KC_LGUI ,         KC_UP   ,
                                       KX_BKNM ,KX_DCTL ,KC_PGDN ,         KC_DOWN ,KX_NALT ,KX_SPAC
 ),
 
@@ -44,10 +44,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 [L_NUM] = LAYOUT_ergodox_pretty_wrapper(
   _______ ,KC_F1   ,KC_F2   ,KC_F3   ,KC_F4   ,KC_F5   ,_______ ,         _______ ,KC_F6   ,KC_F7   ,KC_F8   ,KC_F9   ,KC_F10  ,KC_F11  ,
-  _______ ,__________________L_NUMBER_L1______________ ,_______ ,         _______ ,__________________L_NUMBER_R1______________ ,KC_F12  ,
-  _______ ,__________________L_NUMBER_L2______________ ,                           __________________L_NUMBER_R2______________ ,KC_BSPC ,
-  _______ ,__________________L_NUMBER_L3______________ ,_______ ,         _______ ,__________________L_NUMBER_R3______________ ,KC_TAB  ,
-  _______ ,_______ ,_______ ,_______ ,_______,                                     KC_P0   ,KC_PDOT ,KC_PEQL ,KC_PPLS ,_______ ,
+  _______ ,_______ ,_______ ,_______ ,KC_LBRC ,KC_RBRC ,_______ ,         _______ ,__________________L_NUMBER_R1______________ ,KC_F12  ,
+  _______ ,_______ ,_______ ,ooooooo ,KC_COMM ,_______ ,                           __________________L_NUMBER_R2______________ ,KC_BSPC ,
+  _______ ,_______ ,_______ ,_______ ,_______ ,_______ ,_______ ,         _______ ,__________________L_NUMBER_R3______________ ,KC_TAB  ,
+  _______ ,_______ ,_______ ,_______ ,_______ ,                                    KC_P0   ,KC_PDOT ,KC_PEQL ,KC_PPLS ,_______ ,
 
                                                _______ ,_______ ,         _______ ,_______ ,
                                                         _______ ,         _______ ,
@@ -58,10 +58,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 [L_SYMBOL] = LAYOUT_ergodox_pretty_wrapper(
   _______ ,KC_F1   ,KC_F2   ,KC_F3   ,KC_F4   ,KC_F5   ,_______ ,         _______ ,KC_F6   ,KC_F7   ,KC_F8   ,KC_F9   ,KC_F10  ,KC_F11  ,
-  _______ ,__________________L_NUMBER_L1______________ ,_______ ,         _______ ,__________________L_NUMBER_R1______________ ,KC_F12  ,
-  _______ ,__________________L_NUMBER_L2______________ ,                           __________________L_NUMBER_R2______________ ,KC_BSPC ,
-  _______ ,__________________L_NUMBER_L3______________ ,_______ ,         _______ ,__________________L_NUMBER_R3______________ ,KC_TAB  ,
-  _______ ,_______ ,KC_AMPR ,KC_LABK ,KC_RABK,                                     KC_P0   ,KC_PDOT ,KC_PEQL ,KC_PPLS ,_______ ,
+  _______ ,__________________L_SYMBOL_L1______________ ,_______ ,         _______ ,__________________L_SYMBOL_R1______________ ,KC_F12  ,
+  _______ ,__________________L_SYMBOL_L2______________ ,                           __________________L_SYMBOL_R2______________ ,KC_BSPC ,
+  _______ ,__________________L_SYMBOL_L3______________ ,_______ ,         _______ ,__________________L_SYMBOL_R3______________ ,KC_TAB  ,
+  _______ ,_______ ,_______, _______, _______ ,                                    KC_P0   ,KC_PDOT ,KC_PEQL ,KC_PPLS ,_______ ,
 
                                                _______ ,_______ ,         _______ ,_______ ,
                                                         _______ ,         _______ ,
@@ -80,7 +80,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
                                                _______ ,_______ ,         _______ ,_______ ,
                                                         _______ ,         _______ ,
-                                      MO_FUNC, _______ ,_______ ,         _______ ,_______ ,_______
+                                      _______, _______ ,_______ ,         _______ ,_______ ,_______
 
 ),
 
