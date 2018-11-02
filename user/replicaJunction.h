@@ -153,6 +153,7 @@ enum userspace_custom_keycodes {
 
 #define LAYOUT_wrapper(...)                  LAYOUT(__VA_ARGS__)
 #define LAYOUT_ergodox_wrapper(...)          LAYOUT_ergodox(__VA_ARGS__)
+#define LAYOUT_ergodox_pretty_wrapper(...)  LAYOUT_ergodox_pretty(__VA_ARGS__)
 
 #define ___________________BLANK___________________       _______, _______, _______, _______, _______
 
@@ -191,9 +192,9 @@ enum userspace_custom_keycodes {
     #define __________________L_NUMBER_R2______________       KC_HASH, KC_P4,   KC_P5,   KC_P6,   KC_PAST
     #define __________________L_NUMBER_R3______________       KC_COMM, KC_P1,   KC_P2,   KC_P3,   KC_PMNS
 #else
-    #define __________________L_NUMBER_R1______________       KC_COLN, KC_7,    KC_8,    KC_9,    KC_PSLS
-    #define __________________L_NUMBER_R2______________       KC_HASH, KC_4,    KC_5,    KC_6,    KC_PAST
-    #define __________________L_NUMBER_R3______________       KC_COMM, KC_1,    KC_2,    KC_3,    KC_PMNS
+    #define __________________L_NUMBER_R1______________       KC_COLN, KC_7,    KC_8,    KC_9,    KC_SLSH
+    #define __________________L_NUMBER_R2______________       KC_HASH, KC_4,    KC_5,    KC_6,    KC_ASTR
+    #define __________________L_NUMBER_R3______________       KC_COMM, KC_1,    KC_2,    KC_3,    KC_MINS
 #endif
 
 
