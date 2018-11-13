@@ -161,13 +161,24 @@ enum userspace_custom_keycodes {
 // Colemak base layer
 
 #define __________________COLEMAK_L1_______________       KC_Q,    KC_W,    KC_F,    KC_P,    KC_B
-#define __________________COLEMAK_L2_______________       KC_A,    KC_R_LT, KC_S_LT, KC_T,    KC_G
-#define __________________COLEMAK_L3_______________       KC_Z,    KC_X,    KC_C,    KC_D_LT, KC_V
+#define __________________COLEMAK_L2_______________       KC_A,    KC_R,    KC_S,    KC_T,    KC_G
+#define __________________COLEMAK_L3_______________       KC_Z    ,KC_X,    KC_C,    KC_D,    KC_V
 
 #define __________________COLEMAK_R1_______________       KC_J,    KC_L,    KC_U,    KC_Y,    KC_SCLN
-#define __________________COLEMAK_R2_______________       KC_M,    KC_N,    KC_E_LT, KC_I_LT, KC_O
+#define __________________COLEMAK_R2_______________       KC_M,    KC_N,    KC_E,    KC_I,    KC_O
 #define __________________COLEMAK_R3_______________       KC_K,    KC_H,    KC_COMM, KC_DOT,  KC_SLSH
 
+
+
+// Colemak, but with extras
+
+#define __________________COLEMAK_L1_EX____________       KC_Q,       KC_W,       KC_F,       KC_P,    KC_B
+#define __________________COLEMAK_L2_EX____________       KC_A,       KC_R_LT,    KC_S_LT,    KC_T,    KC_G
+#define __________________COLEMAK_L3_EX____________       CTL_T(KC_Z),GUI_T(KC_X),ALT_T(KC_C),KC_D_LT, KC_V
+
+#define __________________COLEMAK_R1_EX____________       KC_J,    KC_L,    KC_U,          KC_Y,         KC_SCLN
+#define __________________COLEMAK_R2_EX____________       KC_M,    KC_N,    KC_E_LT,       KC_I_LT,      KC_O
+#define __________________COLEMAK_R3_EX____________       KC_K,    KC_H,    ALT_T(KC_COMM),GUI_T(KC_DOT),CTL_T(KC_SLSH)
 
 
 // QWERTY base layer
@@ -184,8 +195,8 @@ enum userspace_custom_keycodes {
 
 // Number pad
 
-#define __________________L_NUMBER_L1______________       _______, _______, _______, _______, _______
-#define __________________L_NUMBER_L2______________       _______, _______, _______, _______, _______
+#define __________________L_NUMBER_L1______________       _______, _______, _______, KC_LBRC, KC_RBRC
+#define __________________L_NUMBER_L2______________       _______, _______, ooooooo, KC_COMM, _______
 #define __________________L_NUMBER_L3______________       _______, _______, _______, _______, _______
 
 #ifdef USE_NUMPAD
@@ -239,46 +250,3 @@ enum userspace_custom_keycodes {
 #define __________________MACRO_R1_________________       _______, RJ_DUND, RJ_SELS, RJ_4ECH, RJ_WHER
 #define __________________MACRO_R2_________________       RJ_NEQ,  RJ_EQ,   RJ_GEQR, RJ_GEQ,  RJ_LEQ
 #define __________________MACRO_R3_________________       _______, _______, _______, _______, _______
-
-
-
-// Legacy. I'm migrating away from this style.
-
-#define __________________L_LL_R_L1________________       _______, _______, _______, _______, _______
-#define __________________L_LL_R_L2________________       _______, ooooooo, KC_AMPR, KC_PIPE, _______
-#define __________________L_LL_R_L3________________       _______, _______, _______, _______, _______
-
-#define __________________L_LL_R_R1________________       KC_COLN, KC_7,    KC_8,    KC_9,    KC_PSLS
-#define __________________L_LL_R_R2________________       KC_HASH, KC_4,    KC_5,    KC_6,    KC_PAST
-#define __________________L_LL_R_R3________________       KC_BSPC, KC_1,    KC_2,    KC_3,    KC_PMNS
-
-
-
-#define __________________L_LL_S_L1________________       _______, _______, _______, _______, _______
-#define __________________L_LL_S_L2________________       _______, _______, ooooooo, _______, _______
-#define __________________L_LL_S_L3________________       _______, _______, _______, _______, _______
-
-#define __________________L_LL_S_R1________________       KC_VOLU, KC_F9,   KC_F10,  KC_F11,  KC_F12
-#define __________________L_LL_S_R2________________       KC_MUTE, KC_F5,   KC_F6,   KC_F7,   KC_F8
-#define __________________L_LL_S_R3________________       KC_VOLD, KC_F1,   KC_F2,   KC_F3,   KC_F4
-
-
-
-#define __________________L_LL_E_L1________________       _______, _______, RJ_SELS, RJ_DUND, _______
-#define __________________L_LL_E_L2________________       RJ_NEQ,  RJ_EQ,   RJ_LEQ,  RJ_GEQ,  RJ_GEQR
-#define __________________L_LL_E_L3________________       _______, _______, _______, _______, _______
-
-#define __________________L_LL_E_R1________________       _______, _______, _______, _______, RJ_QMKV
-#define __________________L_LL_E_R2________________       _______, _______, ooooooo, _______, RJ_MAKE
-#define __________________L_LL_E_R3________________       _______, _______, _______, _______, _______
-
-
-
-#define __________________L_LL_I_L1________________       KC_EXLM, KC_AT,   KC_LCBR, KC_RCBR, KC_SLSH
-#define __________________L_LL_I_L2________________       KC_HASH, KC_DLR,  KC_LPRN, KC_RPRN, KC_PIPE
-#define __________________L_LL_I_L3________________       KC_PERC, KC_CIRC, KC_LBRC, KC_RBRC, KC_BSLS
-
-#define __________________L_LL_I_R1________________       _______, KC_UNDS, KC_GRV,  _______, _______
-#define __________________L_LL_I_R2________________       _______, KC_MINS, KC_QUOT, ooooooo, _______
-#define __________________L_LL_I_R3________________       _______, KC_TILD, KC_DQT,  _______, _______
-
