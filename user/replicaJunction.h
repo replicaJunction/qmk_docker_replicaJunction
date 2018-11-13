@@ -103,6 +103,7 @@ enum userspace_custom_keycodes {
     RJ_DUND,               // $_
     RJ_SELS,               // select * (used for PowerShell)
     RJ_4ECH,               // | % {    (used for PowerShell)
+    RJ_WHER,               // | ? { $_ (used for PowerShell)
 
     #ifdef REPLICAJUNCTION_UNICODE_ENABLE
     U_QUERY,               // Display Unicode input mode
@@ -183,8 +184,8 @@ enum userspace_custom_keycodes {
 
 // Number pad
 
-#define __________________L_NUMBER_L1______________       _______, KC_HOME, KC_UP,   KC_END,  _______
-#define __________________L_NUMBER_L2______________       _______, KC_LEFT, KC_DOWN, KC_RGHT, _______
+#define __________________L_NUMBER_L1______________       _______, _______, _______, _______, _______
+#define __________________L_NUMBER_L2______________       _______, _______, _______, _______, _______
 #define __________________L_NUMBER_L3______________       _______, _______, _______, _______, _______
 
 #ifdef USE_NUMPAD
@@ -235,7 +236,7 @@ enum userspace_custom_keycodes {
 #define __________________MACRO_L2_________________       RJ_MAKE, _______, _______, _______, _______
 #define __________________MACRO_L3_________________       _______, _______, _______, _______, _______
 
-#define __________________MACRO_R1_________________       _______, RJ_DUND, RJ_SELS, RJ_4ECH, _______
+#define __________________MACRO_R1_________________       _______, RJ_DUND, RJ_SELS, RJ_4ECH, RJ_WHER
 #define __________________MACRO_R2_________________       RJ_NEQ,  RJ_EQ,   RJ_GEQR, RJ_GEQ,  RJ_LEQ
 #define __________________MACRO_R3_________________       _______, _______, _______, _______, _______
 

@@ -213,6 +213,13 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
             SEND_STRING(" | % { ");
             return false;
 
+        case RJ_WHER:
+            if (record->event.pressed)
+                return true;
+
+            SEND_STRING(" | ? { $_");
+            return false;
+
         // case G_ADD:
         //     if (record->event.pressed)
         //         return true;
