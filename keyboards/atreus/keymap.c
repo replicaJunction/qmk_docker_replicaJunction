@@ -18,7 +18,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   __________________COLEMAK_L1_EX____________,                   __________________COLEMAK_R1_EX____________,
   __________________COLEMAK_L2_EX____________,                   __________________COLEMAK_R2_EX____________,
   __________________COLEMAK_L3_EX____________,                   __________________COLEMAK_R3_EX____________,
-  TD_LAYR, KC_LGUI, KC_TAB,  KC_LSFT, KC_BSPC, KX_DCTL, KX_NALT, KX_SPAC, KC_RSFT, KC_MINS, KC_QUOT, KC_EQL
+  TD_LAYR, KC_LEAD, KC_TAB,  KC_LSFT, KC_BSPC, KX_DCTL, KX_NALT, KX_SPAC, KC_RSFT, KC_MINS, KC_QUOT, KC_EQL
 )
 ,
 

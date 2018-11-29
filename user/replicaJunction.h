@@ -57,6 +57,8 @@
 #define KX_COMT MT(MOD_LCTL | MOD_LALT, KC_COMM)
 #define KX_H_MT ALT_T(KC_H)
 
+#define ALT_F4 LALT(F4)
+
 // Define LT keycodes based on whether the layout's config.h defines these layers.
 // If the keyboard doesn't define the constant for any given layer, this will act
 // like an ordinary keycode.
@@ -174,11 +176,11 @@ enum userspace_custom_keycodes {
 
 #define __________________COLEMAK_L1_EX____________       KC_Q,       KC_W,       KC_F,       KC_P,    KC_B
 #define __________________COLEMAK_L2_EX____________       KC_A,       KC_R_LT,    KC_S_LT,    KC_T,    KC_G
-#define __________________COLEMAK_L3_EX____________       CTL_T(KC_Z),GUI_T(KC_X),ALT_T(KC_C),KC_D_LT, KC_V
+#define __________________COLEMAK_L3_EX____________       KC_Z,       KC_X,       KC_C,       KC_D_LT, KC_V
 
-#define __________________COLEMAK_R1_EX____________       KC_J,    KC_L,    KC_U,          KC_Y,         KC_SCLN
-#define __________________COLEMAK_R2_EX____________       KC_M,    KC_N,    KC_E_LT,       KC_I_LT,      KC_O
-#define __________________COLEMAK_R3_EX____________       KC_K,    KC_H,    ALT_T(KC_COMM),GUI_T(KC_DOT),CTL_T(KC_SLSH)
+#define __________________COLEMAK_R1_EX____________       KC_J,       KC_L,       KC_U,          KC_Y,         KC_SCLN
+#define __________________COLEMAK_R2_EX____________       KC_M,       KC_N,       KC_E_LT,       KC_I_LT,      KC_O
+#define __________________COLEMAK_R3_EX____________       KC_K,       KC_H,       KC_COMM,       KC_DOT,       KC_SLSH
 
 
 // QWERTY base layer
@@ -224,7 +226,7 @@ enum userspace_custom_keycodes {
 
 // Extend layer
 
-#define _________________L_EXTEND_L1_______________       _______, _______, KC_APP,  KX_CGR,  KX_PAST
+#define _________________L_EXTEND_L1_______________       _______, ALT_F4,  KC_APP,  KX_CGR,  KX_PAST
 #define _________________L_EXTEND_L2_______________       KC_LGUI, KC_LSFT, KC_LALT, KC_LCTL, _______
 #define _________________L_EXTEND_L3_______________       _______, _______, _______, KX_SRCH, KX_ARSC
 

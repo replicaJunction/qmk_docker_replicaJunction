@@ -1,6 +1,7 @@
 #include "replicaJunction.h"
 #include "version.h"
 #include "dynamic_macro.h"
+#include "process_leader.h"
 
 #ifdef TAP_DANCE_ENABLE
 void dance_layer(qk_tap_dance_state_t *state, void *user_data)
@@ -110,6 +111,8 @@ bool process_record_keymap(uint16_t keycode, keyrecord_t *record) {
         return true;
 };
 
+LEADER_EXTERNS();
+
 // Runs just one time when the keyboard initializes.
 void matrix_init_user(void) {
     #ifdef REPLICAJUNCTION_UNICODE_ENABLE
@@ -126,14 +129,66 @@ void matrix_init_user(void) {
 // Runs constantly in the background, in a loop.
 void matrix_scan_user(void) {
     matrix_scan_keymap();
-}
 
-#ifdef REPLICAJUNCTION_UNICODE_ENABLE
-inline void tap(uint16_t keycode) {
-  register_code(keycode);
-  unregister_code(keycode);
-};
-#endif
+    LEADER_DICTIONARY() {
+        leading = false;
+        leader_end();
+
+        SEQ_ONE_KEY(KC_T) {
+            register_code(KC_TAB);
+            unregister_code(KC_TAB);
+        }
+
+        SEQ_ONE_KEY(KC_O) {
+            register_code(KC_LGUI);
+            unregister_code(KC_LGUI);
+        }
+
+        SEQ_ONE_KEY(KC_Q) {
+            register_code(KC_LALT);
+            register_code(KC_F4);
+
+            unregister_code(KC_F4);
+            unregister_code(KC_LALT);
+        }
+
+        // Git
+
+        SEQ_TWO_KEYS(KC_G, KC_A) {
+            SEND_STRING("git add .");
+        }
+        SEQ_TWO_KEYS(KC_G, KC_D) {
+            SEND_STRING("git diff");
+        }
+        SEQ_THREE_KEYS(KC_G, KC_D, KC_S) {
+            SEND_STRING("git diff --staged");
+        }
+        SEQ_TWO_KEYS(KC_G, KC_L) {
+            SEND_STRING("git log");
+        }
+        SEQ_THREE_KEYS(KC_G, KC_L, KC_O) {
+            SEND_STRING("git log --oneline");
+        }
+        SEQ_TWO_KEYS(KC_G, KC_F) {
+            SEND_STRING("git fetch");
+        }
+        SEQ_TWO_KEYS(KC_G, KC_O) {
+            SEND_STRING("git checkout");
+        }
+        SEQ_TWO_KEYS(KC_G, KC_P) {
+            SEND_STRING("git pull");
+        }
+        SEQ_TWO_KEYS(KC_G, KC_S) {
+            SEND_STRING("git status");
+        }
+        SEQ_TWO_KEYS(KC_G, KC_C) {
+            SEND_STRING("git commit -m ''"SS_TAP(X_LEFT));
+        }
+        SEQ_THREE_KEYS(KC_G, KC_C, KC_A) {
+            SEND_STRING("git commit --amend");
+        }
+    }
+}
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     if ( !process_record_dynamic_macro( keycode, record ) ) {

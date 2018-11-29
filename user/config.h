@@ -16,3 +16,5 @@
 // (for example, if z becomes ctrl when you hold it, when this option isn't enabled, z rapidly
 // followed by x actually sends Ctrl-x. That's bad.)
 #define IGNORE_MOD_TAP_INTERRUPT
+
+#define LEADER_TIMEOUT 300
