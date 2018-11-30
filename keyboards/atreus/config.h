@@ -8,6 +8,7 @@
 #define L_EXTEND   3
 #define L_FUNCTION 4
 #define L_MACRO    5
+#define L_VIM      6
 
 // These tell my userspace config which layers go on tap-hold letters
 

@@ -1,4 +1,5 @@
 #include "replicaJunction.h"
+#include "vim.h"
 #include "version.h"
 #include "dynamic_macro.h"
 #include "process_leader.h"
@@ -58,6 +59,9 @@ void dance_layer(qk_tap_dance_state_t *state, void *user_data)
         #endif
         #ifdef L_QWERTY
             layer_off(L_QWERTY);
+        #endif
+        #ifdef L_VIM
+            layer_off(L_VIM);
         #endif
 
         register_code(KC_ESC);
@@ -192,6 +196,10 @@ void matrix_scan_user(void) {
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     if ( !process_record_dynamic_macro( keycode, record ) ) {
+        return false;
+    }
+
+    if ( !process_record_vim( keycode, record) ) {
         return false;
     }
 

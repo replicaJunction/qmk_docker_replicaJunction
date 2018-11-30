@@ -7,6 +7,9 @@
 #include QMK_KEYBOARD_H
 #include "replicaJunction.h"
 
+// Required for Vim emulation - define which layer has the Vim keyboard commands
+extern uint8_t vim_cmd_layer(void) { return L_VIM; }
+
 // These keymaps use "key groups" defined in replicaJunction.h.
 
 // If using a key group, use LAYOUT_wrapper();
@@ -18,7 +21,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   __________________COLEMAK_L1_EX____________,                   __________________COLEMAK_R1_EX____________,
   __________________COLEMAK_L2_EX____________,                   __________________COLEMAK_R2_EX____________,
   __________________COLEMAK_L3_EX____________,                   __________________COLEMAK_R3_EX____________,
-  TD_LAYR, KC_LEAD, KC_TAB,  KC_LSFT, KC_BSPC, KX_DCTL, KX_NALT, KX_SPAC, KC_RSFT, KC_MINS, KC_QUOT, KC_EQL
+  TD_LAYR, VIM_START,KC_TAB,  KC_LSFT, KC_BSPC, KX_DCTL, KX_NALT, KX_SPAC, KC_RSFT, KC_MINS, KC_QUOT, KC_EQL
 )
 ,
 
@@ -59,6 +62,14 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   __________________MACRO_L2_________________,                   __________________MACRO_R2_________________,
   __________________MACRO_L3_________________,                   __________________MACRO_R3_________________,
   _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______
+)
+,
+
+[L_VIM] = LAYOUT_wrapper(
+  __________________COLEMAK_L1_VIM___________,                   __________________COLEMAK_R1_VIM___________,
+  __________________COLEMAK_L2_VIM___________,                   __________________COLEMAK_R2_VIM___________,
+  __________________COLEMAK_L3_VIM___________,                   __________________COLEMAK_R3_VIM___________,
+  _______, VIM_ESC, _______, VIM_SFT, _______, _______, _______, _______, VIM_SFT, VIM_DOT, VIM_COM, _______
 )
 
 };

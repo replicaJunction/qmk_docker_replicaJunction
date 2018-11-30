@@ -1,6 +1,7 @@
 #pragma once
 
 #include "quantum.h"
+#include "vim.h"
 
 ///////////////////////////////////////////////////////////////////////////////
 // Keymap definitions
@@ -90,18 +91,19 @@
 
 // "Macro" functions
 enum userspace_custom_keycodes {
-    RJ_MAKE = SAFE_RANGE,  // QMK make command
-    RJ_QMKV,               // QMK version
-    RJ_EQ,                 // ==
-    RJ_NEQ,                // !=
-    RJ_GEQ,                // >=
-    RJ_LEQ,                // <=
-    RJ_GEQR,               // => ("greater than or equal - right")
-    RJ_DUND,               // $_
-    RJ_SELS,               // select * (used for PowerShell)
-    RJ_4ECH,               // | % {    (used for PowerShell)
-    RJ_WHER,               // | ? { $_ (used for PowerShell)
+    RJ_MAKE = VIM_SAFE_RANGE,  // QMK make command
+    RJ_QMKV,                   // QMK version
+    RJ_EQ,                     // ==
+    RJ_NEQ,                    // !=
+    RJ_GEQ,                    // >=
+    RJ_LEQ,                    // <=
+    RJ_GEQR,                   // => ("greater than or equal - right")
+    RJ_DUND,                   // $_
+    RJ_SELS,                   // select * (used for PowerShell)
+    RJ_4ECH,                   // | % {    (used for PowerShell)
+    RJ_WHER,                   // | ? { $_ (used for PowerShell)
 
+    // Used for dynamic macros
     DYNAMIC_MACRO_RANGE
 };
 
