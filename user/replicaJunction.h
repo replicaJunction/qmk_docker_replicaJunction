@@ -2,11 +2,6 @@
 
 #include "quantum.h"
 
-#if (defined(UNICODE_ENABLE) || defined(UNICODEMAP_ENABLE) || defined(UCIS_ENABLE))
-    #define REPLICAJUNCTION_UNICODE_ENABLE
-    #include "replicaJunction_unicode.h"
-#endif
-
 ///////////////////////////////////////////////////////////////////////////////
 // Keymap definitions
 ///////////////////////////////////////////////////////////////////////////////
@@ -107,14 +102,6 @@ enum userspace_custom_keycodes {
     RJ_4ECH,               // | % {    (used for PowerShell)
     RJ_WHER,               // | ? { $_ (used for PowerShell)
 
-    #ifdef REPLICAJUNCTION_UNICODE_ENABLE
-    U_QUERY,               // Display Unicode input mode
-    U_TABLE,               // Table flip
-    // U_TABL2,               // Reset the table
-    U_SHRUG,               // Shrug
-    U_DLOOK,               // Look of disapproval
-    #endif
-
     DYNAMIC_MACRO_RANGE
 };
 
@@ -164,7 +151,7 @@ enum userspace_custom_keycodes {
 
 #define __________________COLEMAK_L1_______________       KC_Q,    KC_W,    KC_F,    KC_P,    KC_B
 #define __________________COLEMAK_L2_______________       KC_A,    KC_R,    KC_S,    KC_T,    KC_G
-#define __________________COLEMAK_L3_______________       KC_Z    ,KC_X,    KC_C,    KC_D,    KC_V
+#define __________________COLEMAK_L3_______________       KC_Z,    KC_X,    KC_C,    KC_D,    KC_V
 
 #define __________________COLEMAK_R1_______________       KC_J,    KC_L,    KC_U,    KC_Y,    KC_SCLN
 #define __________________COLEMAK_R2_______________       KC_M,    KC_N,    KC_E,    KC_I,    KC_O
