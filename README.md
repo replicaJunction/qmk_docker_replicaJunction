@@ -35,3 +35,5 @@ To be clear, not much is supported other than basic navigation and motions. QMK 
   * Sanity check on the Function keys (_of course they should be in rows of 4, not rows of 3 like a number pad. Why did I ever use anything else?_)
 * [DreymaR of the Colemak forums](https://forum.colemak.com/topic/2014-extend-extra-extreme/)
   * Original idea of the Extend layer
+* [xtonhasvim](https://github.com/qmk/qmk_firmware/tree/master/users/xtonhasvim)
+  * Vim emulation - original idea and basic state machine concept
