@@ -45,14 +45,3 @@ extern uint8_t vim_cmd_layer(void);
 bool process_record_vim(uint16_t keycode, keyrecord_t *record);
 
 extern uint16_t vstate;
-
-
-// Colemak base layer
-
-#define __________________COLEMAK_L1_VIM___________       _______, VIM_W,   _______, VIM_P,   VIM_B
-#define __________________COLEMAK_L2_VIM___________       VIM_A,   _______, VIM_S,   _______, VIM_G
-#define __________________COLEMAK_L3_VIM___________       _______, _______, VIM_C,   VIM_D,   VIM_V
-
-#define __________________COLEMAK_R1_VIM___________       VIM_J,   VIM_L,   VIM_U,   VIM_Y,   _______
-#define __________________COLEMAK_R2_VIM___________       _______, _______, VIM_E,   VIM_I,   VIM_O
-#define __________________COLEMAK_R3_VIM___________       VIM_K,   VIM_H,   VIM_DOT, VIM_COM, _______
