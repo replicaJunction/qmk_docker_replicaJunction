@@ -3,7 +3,6 @@
 #include "replicaJunction.h"
 #include "vim.h"
 #include "version.h"
-#include "dynamic_macro.h"
 
 extern uint8_t vim_cmd_layer(void) { return L_VIM; }
 
@@ -59,33 +58,11 @@ void dance_layer(qk_tap_dance_state_t *state, void *user_data) {
     }
 };
 
-void dance_macro( qk_tap_dance_state_t *state, void *user_data) {
-    if ( state->count > 3 )
-        return;
-
-    keyrecord_t kr;
-    kr.event.pressed = false;
-    uint16_t action = DYN_REC_STOP;
-
-    if ( state->count == 1 ) {
-        action = DYN_MACRO_PLAY1;
-    }
-    else if ( state->count == 2 ) {
-        action = DYN_REC_STOP;
-        kr.event.pressed = true;
-    }
-    else if ( state->count == 3 ) {
-        action = DYN_REC_START1;
-    }
-
-    process_record_dynamic_macro( action, &kr );
-}
-
 // Tap Dance Definitions
 // Note - this needs to come AFTER the function is declared
 qk_tap_dance_action_t tap_dance_actions[] = {
-        [TD_LAYER_TOGGLE] = ACTION_TAP_DANCE_FN(dance_layer),
-        [TD_MACRO]        = ACTION_TAP_DANCE_FN(dance_macro)
+        [TD_LAYER_TOGGLE] = ACTION_TAP_DANCE_FN(dance_layer)
+        // [TD_MACRO]        = ACTION_TAP_DANCE_FN(dance_macro)
 };
 
 #endif // TAP_DANCE_ENABLE
@@ -135,9 +112,9 @@ uint32_t layer_state_set_user(uint32_t state) {
 #endif
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
-    if ( !process_record_dynamic_macro( keycode, record ) ) {
-        return false;
-    }
+    // if ( !process_record_dynamic_macro( keycode, record ) ) {
+    //     return false;
+    // }
 
     if ( !process_record_vim( keycode, record) ) {
         return false;
