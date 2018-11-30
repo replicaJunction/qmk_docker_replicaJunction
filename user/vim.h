@@ -25,13 +25,19 @@ enum vim_keycodes {
     VIM_W,
     VIM_X,
     VIM_Y,
-    VIM_DOT, // to support indent/outdent
-    VIM_COM,  // and toggle comments
-    VIM_SFT, // avoid side-effect of supporting real shift.
+    VIM_PERIOD, // to support indent/outdent
+    VIM_COMMA,  // and toggle comments
+    VIM_SHIFT, // avoid side-effect of supporting real shift.
     VIM_ESC, // bookend
 
     VIM_SAFE_RANGE // start other keycodes here.
 };
+
+// Convenient aliases for keymap definitions
+#define V_START VIM_START
+#define V_SHIFT VIM_SHIFT
+#define V_DOT   VIM_PERIOD
+#define V_COMMA VIM_COMMA
 
 // NOTE: YOU MUST DEFINE THIS
 extern uint8_t vim_cmd_layer(void);

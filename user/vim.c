@@ -138,7 +138,7 @@ bool process_record_vim(uint16_t keycode, keyrecord_t *record) {
     }
 
     // If we pressed the Shift key, update the Vim Shift register and quit
-    if (keycode == VIM_SFT) {
+    if (keycode == VIM_SHIFT) {
         SHIFTED = record->event.pressed;
         return false;
     }
