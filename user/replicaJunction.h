@@ -1,8 +1,6 @@
 #pragma once
 
 #include "quantum.h"
-#include "vim.h"
-
 ///////////////////////////////////////////////////////////////////////////////
 // Layer definitions
 ///////////////////////////////////////////////////////////////////////////////
@@ -18,13 +16,12 @@ enum layers {
     L_SYMBOL,
     L_EXTEND,
     L_FUNCTION,
-    L_MACRO,
 
     #ifdef HAS_LAYER_GAMING
     L_GAMING,
     #endif
 
-    L_VIM
+    L_MACRO
 };
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -62,7 +59,7 @@ enum layers {
 
 // "Macro" functions
 enum userspace_custom_keycodes {
-    RJ_MAKE = VIM_SAFE_RANGE,  // QMK make command
+    RJ_MAKE = SAFE_RANGE,      // QMK make command
     RJ_QMKV,                   // QMK version
     RJ_EQ,                     // ==
     RJ_NEQ,                    // !=
