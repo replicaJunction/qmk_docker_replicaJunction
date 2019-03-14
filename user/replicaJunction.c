@@ -51,6 +51,9 @@ void dance_layer(qk_tap_dance_state_t *state, void *user_data) {
         #ifdef HAS_LAYER_QWERTY
             layer_off(L_QWERTY);
         #endif
+        #ifdef HAS_LAYER_GAMING
+            layer_off(L_GAMING);
+        #endif
         layer_off(L_VIM);
 
         register_code(KC_ESC);
@@ -246,7 +249,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   KX_ECTL ,KC_Q    ,KC_W    ,KC_F    ,KC_P    ,KC_B    ,KC_LBRC ,         KC_DEL  ,KC_J    ,KC_L    ,KC_U    ,KC_Y    ,KC_SCLN ,KC_BSLS,
   KC_TAB  ,KC_A    ,KC_R_LT ,KC_S_LT ,KC_T    ,KC_G    ,                           KC_M    ,KC_N    ,KC_E_LT ,KC_I    ,KC_O    ,KC_QUOT,
   KC_LSFT ,KC_Z    ,KC_X    ,KC_C    ,KC_D_LT ,KC_V    ,KC_RBRC ,         KC_LOCK ,KC_K    ,KC_H    ,KC_COMM ,KC_DOT  ,KC_SLSH ,KC_RSFT,
-  TD_LAYR ,TD_LAYR ,V_START ,KC_TAB  ,KC_LSFT ,                                             KC_RSFT ,KC_MINS ,KC_QUOT ,KC_EQL  ,TT_NUM ,
+  TD_LAYR ,KC_LCTL ,V_START ,KC_TAB  ,KC_LSFT ,                                             KC_RSFT ,KC_MINS ,KC_QUOT ,KC_EQL  ,TT_NUM ,
 
                                                KC_LCTL ,KC_LALT ,         KC_RCTL ,KC_RALT ,
                                                         KC_LGUI ,         KC_RGUI ,
@@ -347,7 +350,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   KC_ESC  ,_______ ,_______ ,_______ ,_______ ,_______ ,_______ ,         _______ ,_______ ,_______ ,_______ ,_______ ,_______ ,_______ ,
   _______ ,_______ ,KC_R    ,KC_S    ,_______ ,_______ ,                           _______ ,_______ ,KC_E    ,_______ ,_______ ,_______ ,
   KC_LSFT ,_______ ,_______ ,_______ ,KC_D    ,_______ ,_______ ,         _______ ,_______ ,_______ ,_______ ,_______ ,KC_UP,   KC_SLSH,
-  _______ ,_______ ,_______ ,KC_LALT ,KC_LCTL ,                                             _______ ,_______ ,KC_LEFT, KC_DOWN, KC_RGHT,
+  _______ ,_______ ,KC_ESC  ,KC_LALT ,KC_LCTL ,                                             _______ ,_______ ,KC_LEFT, KC_DOWN, KC_RGHT,
 
                                                _______ ,_______ ,         M_MCLIK ,_______ ,
                                                         _______ ,         M_RCLIK ,
