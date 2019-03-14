@@ -1,10 +1,7 @@
 #include QMK_KEYBOARD_H
 
 #include "replicaJunction.h"
-#include "vim.h"
 #include "version.h"
-
-extern uint8_t vim_cmd_layer(void) { return L_VIM; }
 
 #ifdef TAP_DANCE_ENABLE
 void dance_layer(qk_tap_dance_state_t *state, void *user_data) {
@@ -100,28 +97,10 @@ bool process_record_keymap(uint16_t keycode, keyrecord_t *record) {
 //     matrix_init_keymap();
 // };
 
-#ifdef CONSOLE_ENABLE
-uint32_t layer_state_set_user(uint32_t state) {
-    switch (biton32(state)) {
-        case L_VIM:
-            uprintf("layer:vim (%u)\n", L_VIM);
-            break;
-        case L_MACRO:
-            uprintf("layer:macro\n");
-            break;
-    }
-    return state;
-}
-#endif
-
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     // if ( !process_record_dynamic_macro( keycode, record ) ) {
     //     return false;
     // }
-
-    if ( !process_record_vim( keycode, record) ) {
-        return false;
-    }
 
     switch(keycode)
     {
@@ -249,7 +228,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   KX_ECTL ,KC_Q    ,KC_W    ,KC_F    ,KC_P    ,KC_B    ,KC_LBRC ,         KC_DEL  ,KC_J    ,KC_L    ,KC_U    ,KC_Y    ,KC_SCLN ,KC_BSLS,
   KC_TAB  ,KC_A    ,KC_R_LT ,KC_S_LT ,KC_T    ,KC_G    ,                           KC_M    ,KC_N    ,KC_E_LT ,KC_I    ,KC_O    ,KC_QUOT,
   KC_LSFT ,KC_Z    ,KC_X    ,KC_C    ,KC_D_LT ,KC_V    ,KC_RBRC ,         KC_LOCK ,KC_K    ,KC_H    ,KC_COMM ,KC_DOT  ,KC_SLSH ,KC_RSFT,
-  TD_LAYR ,KC_LCTL ,V_START ,KC_TAB  ,KC_LSFT ,                                             KC_RSFT ,KC_MINS ,KC_QUOT ,KC_EQL  ,TT_NUM ,
+  TD_LAYR ,TD_LAYR ,KC_LGUI ,KC_TAB  ,KC_LSFT ,                                             KC_RSFT ,KC_MINS ,KC_QUOT ,KC_EQL  ,TT_NUM ,
 
                                                KC_LCTL ,KC_LALT ,         KC_RCTL ,KC_RALT ,
                                                         KC_LGUI ,         KC_RGUI ,
@@ -356,19 +335,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                                         _______ ,         M_RCLIK ,
                                       KC_SPC,  KC_LSFT, _______ ,         M_LCLIK ,KC_ENT  ,KC_BSPC
 
-),
-#endif
-
-[L_VIM] = TEMPLATE(
-  _______ ,_______ ,_______ ,_______ ,_______ ,_______ ,_______ ,         _______ ,_______, _______, _______, _______, _______ ,_______ ,
-  _______ ,_______ ,VIM_W   ,_______ ,VIM_P   ,VIM_B   ,_______ ,         _______ ,VIM_J   ,VIM_L   ,VIM_U   ,VIM_Y   ,_______ ,_______ ,
-  _______ ,VIM_A   ,_______ ,VIM_S   ,_______ ,VIM_G   ,                           _______ ,_______ ,VIM_E   ,VIM_I   ,VIM_O   ,_______ ,
-  _______ ,_______ ,_______ ,VIM_C   ,VIM_D   ,VIM_V   ,_______ ,         _______ ,VIM_K   ,VIM_H   ,V_DOT   ,V_COMMA ,_______ ,_______ ,
-  _______ ,_______ ,VIM_ESC ,_______ ,V_SHIFT ,                                             V_SHIFT ,_______ ,_______ ,_______ ,_______ ,
-
-                                               _______ ,_______ ,         _______ ,_______ ,
-                                                        _______ ,         _______ ,
-                                      _______ ,_______ ,_______ ,         _______ ,_______ ,_______
 )
+#endif
 
 };
