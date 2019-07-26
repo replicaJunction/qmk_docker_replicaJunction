@@ -3,7 +3,7 @@ services:
   qmk:
     build: ./container
     environment:
-      keyboard: 'ergodox_ez,atreus'
+      keyboard: 'ergodox_ez,atreus,handwired/dactyl_manuform/5x6'
       layout: 'replicaJunction'
 
     volumes:
@@ -16,6 +16,11 @@ services:
       - type: bind
         source: ./keyboards/atreus
         target: /qmk_firmware/keyboards/atreus/keymaps/replicaJunction
+
+      # Dactyl-Manuform 5x6
+      - type: bind
+        source: ./keyboards/dacman_5x6
+        target: /qmk_firmware/keyboards/handwired/dactyl_manuform/5x6/keymaps/replicaJunction
 
       # User config
       - type: bind
