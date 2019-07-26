@@ -2,8 +2,6 @@ echo "QMK Docker bootstrapper v0.2.5"
 
 make clean
 
-make clean
-
 (
     # https://stackoverflow.com/a/1407098
     export IFS=","
