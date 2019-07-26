@@ -1,4 +1,6 @@
-echo "QMK Docker bootstrapper v0.2.4"
+echo "QMK Docker bootstrapper v0.2.5"
+
+make clean
 
 make clean
 
@@ -13,9 +15,24 @@ make clean
             echo "================================================================================"
             echo
             make ${curr_keyboard}:${curr_layout}
-            cp ${curr_keyboard}_${curr_layout}.hex /output/${curr_keyboard}_${curr_layout}.hex
+            # cp ${curr_keyboard}_${curr_layout}.hex /output/${curr_keyboard}_${curr_layout}.hex
         done
+    done
+
+    echo
+    echo "================================================================================"
+    echo "Copying output"
+    echo "================================================================================"
+    echo
+
+    for file in *.hex; do
+        echo "Copying file $file"
+        cp $file /output
     done
 )
 
+echo
+echo "================================================================================"
 echo "Complete"
+echo "================================================================================"
+echo
